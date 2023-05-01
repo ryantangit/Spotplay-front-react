@@ -6,8 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-			This is a paragraph and spotify soon will be in here.
-			I don't know how but it will be done.
+			This app will identify some fun things about you and your spotify usage.
         </p> 
       </header>
     </div>
