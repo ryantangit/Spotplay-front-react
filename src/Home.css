@@ -1,9 +1,9 @@
-.App {
+.Home {
   text-align: center;
 }
 
 
-.App-header {
+.Home-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -14,6 +14,6 @@
   color: white;
 }
 
-.App-link {
+.Home-link {
   color: #61dafb;
 }
