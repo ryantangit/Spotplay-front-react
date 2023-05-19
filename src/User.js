@@ -1,23 +1,31 @@
-import react, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
+import "./User.css"
 import Song from "./Song"
+import {useState, useEffect} from 'react';
 function User() {
+	console.log("=====RENDER START=====")
 	const uuid = new URLSearchParams(window.location.search).get("uuid");
-	const [topFiveArray, setTopFiveArray] = useState([]);
+	const [topFiveSong, setTopFiveSong] = useState([]);
 	useEffect(() =>{
-		const topFiveSong = async() => {
+		let active = true;
+		const fetchTopFiveSong = async() => {
 			try {
 				const topFiveResponse = await fetch(`http://localhost:3000/topfivetracks/${uuid}`);
 				const topFiveData = await topFiveResponse.json();
 				const topFiveObject = await JSON.parse(topFiveData);
-				topFiveObject.forEach((song) => {
-					setTopFiveArray((topFiveArray)=> [...topFiveArray, song.name]);
-				});	
+				if(active) {
+					setTopFiveSong(topFiveObject);
+				}
 			} catch (error) {
 				console.log("something went wrong with fetching from topfivetracks");
 			}
 		};
-		topFiveSong();
-	}, []);
+		fetchTopFiveSong();
+		return () => {
+			active = false;
+		}
+	}, [uuid]);
+	console.log(topFiveSong);
   return (
     <div className="User">
       <header className="User-header">
@@ -25,9 +33,10 @@ function User() {
 			Hello User: {uuid}
         </p> 	
 			<Song songs={topFiveArray}/>
-      </header>
+     </header>
     </div>
   );
 }
 
 export default User;
+
