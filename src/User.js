@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import "./User.css"
 import Song from "./Song"
 import {useState, useEffect} from 'react';
@@ -32,7 +31,7 @@ function User() {
         <p>
 			Hello User: {uuid}
         </p> 	
-			<Song songs={topFiveArray}/>
+			<Song songs={topFiveSong}/>
      </header>
     </div>
   );
