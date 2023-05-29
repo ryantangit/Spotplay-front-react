@@ -29,7 +29,7 @@ function User() {
     <div className="User">
       <header className="User-header">
         <p>
-			Hello User: {uuid}
+			Here are your top five songs!	
         </p> 	
 			<Song songs={topFiveSong}/>
      </header>
